@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ôn Từ Vựng Tiếng Anh 9 (Unit 1–5) | Global Success</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-hover: #273549;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.16);
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.16);
+      --warning: #f59e0b;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    header {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .badge {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+    }
+
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      text-align: center;
+    }
+
+    .stat-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 7px 4px;
+    }
+
+    .stat-val {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-lbl {
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    select, button {
+      font-family: inherit;
+      font-size: 0.9rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    select {
+      flex: 1 1 160px;
+      font-weight: 500;
+    }
+
+    button {
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn-warning {
+      border-color: rgba(245, 158, 11, 0.5);
+      color: #fbbf24;
+    }
+
+    .mode-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: var(--card);
+      padding: 5px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .mode-tab {
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      padding: 9px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .mode-tab.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .progress-wrap {
+      width: 100%;
+      height: 6px;
+      background: #0f172a;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .q-prompt {
+      text-align: center;
+      padding: 4px 4px;
+    }
+
+    .q-hint {
+      font-size: 0.74rem;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .q-meaning {
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #fff;
+    }
+
+    .q-pos {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.75);
+      padding: 2px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt-btn {
+      width: 100%;
+      text-align: left;
+      justify-content: flex-start;
+      padding: 12px 14px;
+      font-size: 0.98rem;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid #475569;
+      border-radius: 11px;
+      color: #f8fafc;
+      line-height: 1.3;
+    }
+
+    .opt-btn.correct {
+      background: var(--success-bg);
+      border-color: var(--success);
+      color: #6ee7b7;
+    }
+
+    .opt-btn.wrong {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: #fca5a5;
+    }
+
+    .opt-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .feedback {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 12px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback-title {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .uk-us-note {
+      color: #93c5fd;
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+
+    .example-note {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+
+    .flashcard {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      min-height: 190px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .fc-front-label {
+      font-size: 0.74rem;
+      color: #60a5fa;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .fc-main {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .fc-sub {
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .fc-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--muted);
+      padding: 4px 0 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-row">
+        <h1>Ôn Từ Vựng Tiếng Anh 9 (Unit 1–5)</h1>
+        <span class="badge">Global Success • UK &amp; US</span>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-box">
+          <div class="stat-val" id="statTotal">0</div>
+          <div class="stat-lbl">Tổng từ</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statCorrect" style="color:#34d399;">0</div>
+          <div class="stat-lbl">Đã thuộc</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statWrong" style="color:#f87171;">0</div>
+          <div class="stat-lbl">Cần ôn lại</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statStreak" style="color:#fbbf24;">0</div>
+          <div class="stat-lbl">Chuỗi đúng</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <select id="unitFilter" aria-label="Chọn Unit">
+          <option value="ALL">Tất cả Unit 1 – 5</option>
+          <option value="Unit 1">Unit 1: Local Community</option>
+          <option value="Unit 2">Unit 2: City Life</option>
+          <option value="Unit 3">Unit 3: Healthy Living for Teens</option>
+          <option value="Unit 4">Unit 4: Remembering the Past</option>
+          <option value="Unit 5">Unit 5: Our Experiences</option>
+          <option value="WRONG">Chỉ ôn các từ làm sai</option>
+        </select>
+
+        <button type="button" id="btnShuffle">Tráo từ</button>
+        <button type="button" id="btnReset" class="btn-warning">Đặt lại</button>
+      </div>
+    </header>
+
+    <div class="mode-tabs">
+      <button type="button" class="mode-tab active" id="tabQuiz">Trắc nghiệm (Việt → Anh)</button>
+      <button type="button" class="mode-tab" id="tabFlash">Flashcard lật thẻ</button>
+    </div>
+
+    <main class="card" id="quizSection">
+      <div class="progress-wrap">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+
+      <div class="q-meta">
+        <span id="qUnitTag">Unit 1</span>
+        <span id="qCounter">Câu 1 / 10</span>
+      </div>
+
+      <div class="q-prompt">
+        <div class="q-hint">Chọn từ tiếng Anh tương ứng với nghĩa sau</div>
+        <div class="q-meaning" id="qMeaning">cộng đồng</div>
+        <div class="q-pos" id="qPos">danh từ (n)</div>
+      </div>
+
+      <div class="options" id="optionsBox"></div>
+
+      <div class="feedback" id="feedbackBox">
+        <div class="feedback-title" id="fbTitle"></div>
+        <div id="fbDetail"></div>
+        <div class="uk-us-note" id="fbUkUs"></div>
+        <div class="example-note" id="fbExample"></div>
+      </div>
+
+      <button type="button" class="btn-primary hidden" id="btnNext">Câu tiếp theo →</button>
+    </main>
+
+    <section class="card hidden" id="flashSection">
+      <div class="q-meta">
+        <span id="fcUnitTag">Unit 1</span>
+        <span id="fcCounter">Thẻ 1 / 10</span>
+      </div>
+
+      <div class="flashcard" id="flashcardBox">
+        <div class="fc-front-label" id="fcSideLabel">NGHĨA TIẾNG VIỆT (Chạm để lật)</div>
+        <div class="fc-main" id="fcMainText">cộng đồng</div>
+        <div class="fc-sub" id="fcSubText">danh từ (n)</div>
+      </div>
+
+      <div class="fc-actions">
+        <button type="button" id="fcPrev">← Thẻ trước</button>
+        <button type="button" class="btn-primary" id="fcNext">Thẻ tiếp →</button>
+      </div>
+    </section>
+
+    <footer>
+      Tự động lưu tiến độ trên trình duyệt • Chạy trực tiếp trên cả Android &amp; iOS không cần mạng
+    </footer>
+  </div>
+
+  <script>
+    const VOCAB = [
+      { unit: "Unit 1", vi: "cộng đồng", en: "community", pos: "n", ukus: "", ex: "Our local community organizes a clean-up every Sunday." },
+      { unit: "Unit 1", vi: "người phục vụ cộng đồng", en: "community helper", pos: "n", ukus: "", ex: "Firefighters and nurses are important community helpers." },
+      { unit: "Unit 1", vi: "làng nghề thủ công", en: "craft village", pos: "n", ukus: "", ex: "Bat Trang is a famous pottery craft village near Ha Noi." },
+      { unit: "Unit 1", vi: "đồ thủ công mỹ nghệ", en: "handicraft", pos: "n", ukus: "", ex: "Tourists love buying local handicrafts as souvenirs." },
+      { unit: "Unit 1", vi: "nghệ nhân", en: "artisan", pos: "n", ukus: "", ex: "Skilled artisans make conical hats by hand." },
+      { unit: "Unit 1", vi: "xưởng thủ công", en: "workshop", pos: "n", ukus: "", ex: "We visited a silk weaving workshop in the village." },
+      { unit: "Unit 1", vi: "đồ gốm", en: "pottery", pos: "n", ukus: "", ex: "She learned how to shape clay into pottery." },
+      { unit: "Unit 1", vi: "đặc sản", en: "speciality", pos: "n", ukus: "UK: speciality • US: specialty", ex: "Pho is a well-known Vietnamese speciality." },
+      { unit: "Unit 1", vi: "cơ sở vật chất", en: "facility", pos: "n", ukus: "", ex: "The new sports facility has a swimming pool and gym." },
+      { unit: "Unit 1", vi: "vùng ngoại ô", en: "suburb", pos: "n", ukus: "", ex: "Many families prefer living in a quiet suburb." },
+      { unit: "Unit 1", vi: "khu phố, hàng xóm", en: "neighbourhood", pos: "n", ukus: "UK: neighbourhood • US: neighborhood", ex: "Everyone in our neighbourhood is friendly." },
+      { unit: "Unit 1", vi: "điểm thu hút khách du lịch", en: "tourist attraction", pos: "n", ukus: "", ex: "The old temple is the biggest tourist attraction here." },
+      { unit: "Unit 1", vi: "nhân viên giao hàng", en: "delivery person", pos: "n", ukus: "", ex: "The delivery person brought our package this morning." },
+      { unit: "Unit 1", vi: "lính cứu hỏa", en: "firefighter", pos: "n", ukus: "", ex: "The firefighter rescued a cat from the burning house." },
+      { unit: "Unit 1", vi: "người thu gom rác", en: "garbage collector", pos: "n", ukus: "US: garbage collector • UK: refuse collector / dustman", ex: "The garbage collector empties the bins early every morning." },
+      { unit: "Unit 1", vi: "thợ điện", en: "electrician", pos: "n", ukus: "", ex: "We called an electrician to fix the broken lights." },
+      { unit: "Unit 1", vi: "bảo tồn, giữ gìn", en: "preserve", pos: "v", ukus: "", ex: "We must preserve our traditional music and crafts." },
+      { unit: "Unit 1", vi: "rút ngắn", en: "shorten", pos: "v", ukus: "", ex: "The new bridge will shorten travel time to the city." },
+      { unit: "Unit 1", vi: "gợi nhớ, nhắc nhở", en: "remind", pos: "v", ukus: "", ex: "This song reminds me of my childhood." },
+      { unit: "Unit 1", vi: "tuân thủ, chấp hành", en: "obey", pos: "v", ukus: "", ex: "All drivers must obey traffic rules." },
+      { unit: "Unit 1", vi: "nguyên bản, gốc", en: "original", pos: "adj", ukus: "", ex: "The house still keeps its original wooden doors." },
+      { unit: "Unit 1", vi: "có quan hệ tốt với ai", en: "get on with", pos: "phrasal v", ukus: "UK: get on with • US: get along with", ex: "I get on well with all my classmates." },
+      { unit: "Unit 1", vi: "truyền lại (cho thế hệ sau)", en: "hand down", pos: "phrasal v", ukus: "Đồng nghĩa: pass down", ex: "These weaving skills were handed down from grandparents." },
+      { unit: "Unit 1", vi: "tìm ra, khám phá thông tin", en: "find out", pos: "phrasal v", ukus: "", ex: "Let's find out when the museum opens." },
+      { unit: "Unit 1", vi: "đi tham quan, nhìn quanh", en: "look around", pos: "phrasal v", ukus: "", ex: "We spent the afternoon looking around the old town." },
+      { unit: "Unit 1", vi: "quay trở lại", en: "come back", pos: "phrasal v", ukus: "", ex: "We will come back to this village next summer." },
+      { unit: "Unit 1", vi: "cắt giảm", en: "cut down on", pos: "phrasal v", ukus: "", ex: "You should cut down on sugary drinks." },
+      { unit: "Unit 1", vi: "cạn kiệt, hết sạch", en: "run out of", pos: "phrasal v", ukus: "", ex: "We have run out of milk; let's buy some more." },
+
+      { unit: "Unit 2", vi: "khu trung tâm thành phố", en: "downtown", pos: "n / adv", ukus: "US/chung: downtown • UK: city centre", ex: "Traffic is always heavy in downtown areas." },
+      { unit: "Unit 2", vi: "tàu điện ngầm", en: "underground", pos: "n", ukus: "UK: underground / tube • US: subway", ex: "Taking the underground is faster than driving." },
+      { unit: "Unit 2", vi: "xe điện mặt đất", en: "tram", pos: "n", ukus: "UK: tram • US: streetcar", ex: "Many tourists enjoy riding the historic tram." },
+      { unit: "Unit 2", vi: "tàu điện trên cao", en: "sky train", pos: "n", ukus: "", ex: "The sky train gives a great view of the city." },
+      { unit: "Unit 2", vi: "vỉa hè", en: "pavement", pos: "n", ukus: "UK: pavement • US: sidewalk", ex: "Pedestrians should walk on the pavement." },
+      { unit: "Unit 2", vi: "rác thải", en: "rubbish", pos: "n", ukus: "UK: rubbish • US: garbage / trash", ex: "Please put your rubbish in the bin." },
+      { unit: "Unit 2", vi: "bãi đỗ xe", en: "car park", pos: "n", ukus: "UK: car park • US: parking lot", ex: "The shopping mall has an underground car park." },
+      { unit: "Unit 2", vi: "cầu vượt", en: "flyover", pos: "n", ukus: "UK: flyover • US: overpass", ex: "A new flyover was built to reduce traffic jams." },
+      { unit: "Unit 2", vi: "căn hộ", en: "flat", pos: "n", ukus: "UK: flat • US: apartment", ex: "They live in a small flat on the fifth floor." },
+      { unit: "Unit 2", vi: "rừng bê tông (nơi quá nhiều nhà cao tầng)", en: "concrete jungle", pos: "n", ukus: "", ex: "Without parks, a big city feels like a concrete jungle." },
+      { unit: "Unit 2", vi: "công trường xây dựng", en: "construction site", pos: "n", ukus: "", ex: "The noise comes from the construction site next door." },
+      { unit: "Unit 2", vi: "tiện ích công cộng", en: "public amenities", pos: "n", ukus: "", ex: "Parks, libraries, and buses are useful public amenities." },
+      { unit: "Unit 2", vi: "giờ cao điểm", en: "rush hour", pos: "n", ukus: "", ex: "Buses are usually packed during rush hour." },
+      { unit: "Unit 2", vi: "vệ sinh", en: "hygiene", pos: "n", ukus: "", ex: "Good food hygiene keeps street food safe to eat." },
+      { unit: "Unit 2", vi: "thức ăn thừa", en: "leftover", pos: "n / adj", ukus: "", ex: "We kept the leftover food in the fridge." },
+      { unit: "Unit 2", vi: "hối hả, nhộn nhịp", en: "bustling", pos: "adj", ukus: "", ex: "Ho Chi Minh City is a bustling metropolis." },
+      { unit: "Unit 2", vi: "tắc nghẽn (giao thông)", en: "congested", pos: "adj", ukus: "", ex: "Main roads are heavily congested at 5 p.m." },
+      { unit: "Unit 2", vi: "đông đúc, chật ních", en: "packed", pos: "adj", ukus: "Đồng nghĩa: crowded", ex: "The train was packed with commuters." },
+      { unit: "Unit 2", vi: "đáng sống", en: "liveable", pos: "adj", ukus: "UK: liveable • US: livable", ex: "Green spaces make a city much more liveable." },
+      { unit: "Unit 2", vi: "đắt đỏ", en: "pricey", pos: "adj", ukus: "", ex: "Renting an apartment downtown can be quite pricey." },
+      { unit: "Unit 2", vi: "ngứa ngáy", en: "itchy", pos: "adj", ukus: "", ex: "Dusty air makes my eyes feel itchy." },
+      { unit: "Unit 2", vi: "xử lý, chế biến", en: "process", pos: "v", ukus: "", ex: "The plant processes waste water safely." },
+      { unit: "Unit 2", vi: "đi lại, di chuyển quanh khu vực", en: "get around", pos: "phrasal v", ukus: "", ex: "It is easy to get around the city by bus." },
+      { unit: "Unit 2", vi: "tiến hành, thực hiện", en: "carry out", pos: "phrasal v", ukus: "", ex: "Scientists are carrying out a survey on air quality." },
+      { unit: "Unit 2", vi: "mắc bệnh, bị ốm", en: "come down with", pos: "phrasal v", ukus: "", ex: "He came down with a cold after getting caught in the rain." },
+      { unit: "Unit 2", vi: "đi chơi cùng", en: "hang out with", pos: "phrasal v", ukus: "", ex: "Teens often hang out with friends at shopping malls." },
+      { unit: "Unit 2", vi: "vứt bỏ", en: "throw away", pos: "phrasal v", ukus: "", ex: "Don't throw away plastic bottles; recycle them." },
+
+      { unit: "Unit 3", vi: "sức khỏe thể chất", en: "physical health", pos: "n", ukus: "", ex: "Regular exercise improves your physical health." },
+      { unit: "Unit 3", vi: "sức khỏe tinh thần", en: "mental health", pos: "n", ukus: "", ex: "Getting enough sleep is vital for mental health." },
+      { unit: "Unit 3", vi: "người tư vấn, cố vấn", en: "counsellor", pos: "n", ukus: "UK: counsellor • US: counselor", ex: "Students can talk to the school counsellor about stress." },
+      { unit: "Unit 3", vi: "sự ưu tiên", en: "priority", pos: "n", ukus: "", ex: "Finishing homework should be your top priority." },
+      { unit: "Unit 3", vi: "hạn chót", en: "deadline", pos: "n", ukus: "", ex: "I always try to submit assignments before the deadline." },
+      { unit: "Unit 3", vi: "sự xao nhãng", en: "distraction", pos: "n", ukus: "", ex: "Turn off phone notifications to avoid distractions." },
+      { unit: "Unit 3", vi: "sự lo âu", en: "anxiety", pos: "n", ukus: "", ex: "Deep breathing helps reduce exam anxiety." },
+      { unit: "Unit 3", vi: "tâm trạng", en: "mood", pos: "n", ukus: "", ex: "Listening to music puts me in a good mood." },
+      { unit: "Unit 3", vi: "bệnh béo phì", en: "obesity", pos: "n", ukus: "", ex: "Eating too much fast food can lead to obesity." },
+      { unit: "Unit 3", vi: "gây béo", en: "fattening", pos: "adj", ukus: "", ex: "Fried foods and sweets are very fattening." },
+      { unit: "Unit 3", vi: "hoàn thành, đạt được", en: "accomplish", pos: "v", ukus: "", ex: "You can accomplish your goals with daily practice." },
+      { unit: "Unit 3", vi: "đạt được (thành tích)", en: "achieve", pos: "v", ukus: "", ex: "She worked hard to achieve high marks in English." },
+      { unit: "Unit 3", vi: "trì hoãn", en: "delay", pos: "v", ukus: "", ex: "Don't delay studying until the night before the test." },
+      { unit: "Unit 3", vi: "quản lý, xoay xở", en: "manage", pos: "v", ukus: "", ex: "Learning to manage time well reduces stress." },
+      { unit: "Unit 3", vi: "giảm thiểu", en: "minimise", pos: "v", ukus: "UK: minimise • US: minimize", ex: "We should minimise screen time before bedtime." },
+      { unit: "Unit 3", vi: "vượt qua", en: "overcome", pos: "v", ukus: "", ex: "He overcame his fear of speaking in front of the class." },
+      { unit: "Unit 3", vi: "cân bằng, hợp lý", en: "well-balanced", pos: "adj", ukus: "", ex: "A well-balanced diet includes vegetables, protein, and fruit." },
+      { unit: "Unit 3", vi: "lạc quan", en: "optimistic", pos: "adj", ukus: "", ex: "Staying optimistic helps you solve problems faster." },
+      { unit: "Unit 3", vi: "căng thẳng, kiệt sức", en: "stressed out", pos: "adj", ukus: "", ex: "Many teens feel stressed out before final exams." },
+      { unit: "Unit 3", vi: "thêm vào, bổ sung", en: "additional", pos: "adj", ukus: "", ex: "Ask your teacher if you need additional practice." },
+      { unit: "Unit 3", vi: "đến hạn", en: "due", pos: "adj", ukus: "", ex: "Our group project is due next Monday." },
+      { unit: "Unit 3", vi: "một cách phù hợp", en: "appropriately", pos: "adv", ukus: "", ex: "Plan your schedule appropriately for study and rest." },
+
+      { unit: "Unit 4", vi: "thế hệ", en: "generation", pos: "n", ukus: "", ex: "Each generation has its own way of life." },
+      { unit: "Unit 4", vi: "tổ tiên", en: "ancestor", pos: "n", ukus: "", ex: "Vietnamese people worship their ancestors." },
+      { unit: "Unit 4", vi: "di sản", en: "heritage", pos: "n", ukus: "", ex: "Ha Long Bay is a World Natural Heritage site." },
+      { unit: "Unit 4", vi: "đài tưởng niệm, công trình lịch sử", en: "monument", pos: "n", ukus: "", ex: "The monument honors heroes who defended the country." },
+      { unit: "Unit 4", vi: "lâu đài", en: "castle", pos: "n", ukus: "", ex: "We visited an ancient stone castle in Scotland." },
+      { unit: "Unit 4", vi: "quần thể, khu phức hợp", en: "complex", pos: "n", ukus: "", ex: "The Hue Imperial Citadel is a famous temple and palace complex." },
+      { unit: "Unit 4", vi: "cấu trúc, công trình", en: "structure", pos: "n", ukus: "", ex: "This wooden bridge is a remarkable structure." },
+      { unit: "Unit 4", vi: "họ hàng, người thân", en: "relatives", pos: "n", ukus: "", ex: "We visit our relatives during Tet holiday." },
+      { unit: "Unit 4", vi: "ngày kỷ niệm", en: "anniversary", pos: "n", ukus: "", ex: "My grandparents celebrated their 50th wedding anniversary." },
+      { unit: "Unit 4", vi: "phong tục", en: "custom", pos: "n", ukus: "", ex: "Giving lucky money at Tet is a traditional custom." },
+      { unit: "Unit 4", vi: "truyền thống", en: "tradition", pos: "n", ukus: "", ex: "Making chung cake is a long-standing family tradition." },
+      { unit: "Unit 4", vi: "đồ ăn mang đi", en: "takeaway", pos: "n", ukus: "UK: takeaway • US: takeout", ex: "Let's order some takeaway food for dinner tonight." },
+      { unit: "Unit 4", vi: "thúc đẩy, quảng bá", en: "promote", pos: "v", ukus: "", ex: "Festivals help promote local culture to visitors." },
+      { unit: "Unit 4", vi: "công nhận", en: "recognise", pos: "v", ukus: "UK: recognise • US: recognize", ex: "UNESCO recognised Quan Ho folk songs as intangible heritage." },
+      { unit: "Unit 4", vi: "tuân theo, duy trì (phong tục)", en: "observe", pos: "v", ukus: "", ex: "Villagers still observe ancient harvest festivals." },
+      { unit: "Unit 4", vi: "đóng góp", en: "contribute", pos: "v", ukus: "", ex: "Everyone can contribute to protecting historical sites." },
+      { unit: "Unit 4", vi: "chiếm giữ", en: "occupy", pos: "v", ukus: "", ex: "The old palace occupies a large area in the city." },
+      { unit: "Unit 4", vi: "cổ đại, lâu đời", en: "ancient", pos: "adj", ukus: "", ex: "Hoi An is famous for its ancient yellow houses." },
+      { unit: "Unit 4", vi: "có tính lịch sử (quan trọng)", en: "historic", pos: "adj", ukus: "", ex: "The Reunification Palace is a historic landmark." },
+      { unit: "Unit 4", vi: "thuộc về lịch sử", en: "historical", pos: "adj", ukus: "", ex: "She enjoys reading historical novels." },
+      { unit: "Unit 4", vi: "ăn sâu, lâu đời", en: "deep-rooted", pos: "adj", ukus: "", ex: "Respect for teachers is a deep-rooted tradition in Vietnam." },
+      { unit: "Unit 4", vi: "cơ bản, đơn sơ", en: "basic", pos: "adj", ukus: "", ex: "Life in the countryside decades ago was quite basic." },
+      { unit: "Unit 4", vi: "chân trần", en: "barefoot", pos: "adj / adv", ukus: "", ex: "Children used to walk barefoot to school in the past." },
+      { unit: "Unit 4", vi: "trực tiếp, mặt đối mặt", en: "face to face", pos: "adv", ukus: "", ex: "People talked face to face more before smartphones existed." },
+
+      { unit: "Unit 5", vi: "trải nghiệm", en: "experience", pos: "n / v", ukus: "", ex: "Camping in the forest was an unforgettable experience." },
+      { unit: "Unit 5", vi: "cuộc phiêu lưu", en: "adventure", pos: "n", ukus: "", ex: "Exploring the cave felt like a real adventure." },
+      { unit: "Unit 5", vi: "du lịch sinh thái", en: "eco-tour", pos: "n", ukus: "", ex: "We joined an eco-tour to learn about mangrove forests." },
+      { unit: "Unit 5", vi: "kỳ nghỉ tại chỗ", en: "staycation", pos: "n", ukus: "", ex: "Instead of flying abroad, we had a relaxing staycation." },
+      { unit: "Unit 5", vi: "khuôn viên trường", en: "campus", pos: "n", ukus: "", ex: "The university campus has many tall trees." },
+      { unit: "Unit 5", vi: "rạn san hô", en: "coral reef", pos: "n", ukus: "", ex: "Colorful fish live around the coral reef." },
+      { unit: "Unit 5", vi: "đáy biển", en: "seabed", pos: "n", ukus: "", ex: "Divers explored the seabed near the island." },
+      { unit: "Unit 5", vi: "hệ thực vật", en: "flora", pos: "n", ukus: "", ex: "The national park is rich in rare flora and fauna." },
+      { unit: "Unit 5", vi: "hệ động vật", en: "fauna", pos: "n", ukus: "", ex: "We saw many wild birds and local fauna." },
+      { unit: "Unit 5", vi: "điệu múa bộ tộc / dân tộc", en: "tribal dance", pos: "n", ukus: "", ex: "Tourists joined a lively tribal dance around the campfire." },
+      { unit: "Unit 5", vi: "buổi biểu diễn", en: "performance", pos: "n", ukus: "", ex: "Her gong performance received loud applause." },
+      { unit: "Unit 5", vi: "sự tự tin", en: "confidence", pos: "n", ukus: "", ex: "Teamwork builds students' confidence." },
+      { unit: "Unit 5", vi: "chủ đề", en: "theme", pos: "n", ukus: "", ex: "The theme of our summer camp is green living." },
+      { unit: "Unit 5", vi: "khám phá", en: "explore", pos: "v", ukus: "", ex: "We love to explore new trails in the mountains." },
+      { unit: "Unit 5", vi: "lặn với ống thở", en: "snorkelling", pos: "n", ukus: "UK: snorkelling • US: snorkeling", ex: "We went snorkelling in clear blue water in Nha Trang." },
+      { unit: "Unit 5", vi: "thiếu", en: "lack", pos: "v / n", ukus: "", ex: "He didn't pass because he lacked preparation." },
+      { unit: "Unit 5", vi: "học vẹt", en: "learn by rote", pos: "phrase", ukus: "", ex: "Learning by rote makes it hard to remember for long." },
+      { unit: "Unit 5", vi: "dựng lều", en: "put up tents", pos: "phrase", ukus: "", ex: "We learned how to put up tents before sunset." },
+      { unit: "Unit 5", vi: "đầu óc trống rỗng (quên sạch)", en: "go blank", pos: "phrase", ukus: "", ex: "My mind went blank when I stood on stage." },
+      { unit: "Unit 5", vi: "đáng nhớ", en: "memorable", pos: "adj", ukus: "", ex: "Our class trip to Da Lat was truly memorable." },
+      { unit: "Unit 5", vi: "tuyệt vời, đáng kinh ngạc", en: "amazing", pos: "adj", ukus: "", ex: "The view from the mountain top was amazing." },
+      { unit: "Unit 5", vi: "xuất sắc, ấn tượng", en: "brilliant", pos: "adj", ukus: "", ex: "What a brilliant idea for the weekend trip!" },
+      { unit: "Unit 5", vi: "đầy phấn khích, sảng khoái", en: "exhilarating", pos: "adj", ukus: "", ex: "Riding a zip-line over the forest was exhilarating." },
+      { unit: "Unit 5", vi: "ly kỳ, hồi hộp", en: "thrilling", pos: "adj", ukus: "", ex: "Rafting down the river was a thrilling experience." },
+      { unit: "Unit 5", vi: "cảm động", en: "touching", pos: "adj", ukus: "", ex: "The story about soldiers was deeply touching." },
+      { unit: "Unit 5", vi: "ngượng ngùng, xấu hổ", en: "embarrassing", pos: "adj", ukus: "", ex: "Forgetting my lines during the play was embarrassing." },
+      { unit: "Unit 5", vi: "khó chịu", en: "unpleasant", pos: "adj", ukus: "", ex: "Getting lost in the rain was an unpleasant experience." },
+      { unit: "Unit 5", vi: "bất lực, không thể tự xoay xở", en: "helpless", pos: "adj", ukus: "", ex: "Without a map or phone signal, we felt helpless." },
+      { unit: "Unit 5", vi: "như trong quân đội", en: "army-like", pos: "adj", ukus: "", ex: "Students woke up at 5 a.m. in an army-like summer course." }
+    ];
+
+    const STORAGE_KEY = "en9_gs_vocab_progress_v1";
+    let state = { correctSet: [], wrongSet: [], streak: 0 };
+
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (saved) {
+        state.correctSet = Array.isArray(saved.correctSet) ? saved.correctSet : [];
+        state.wrongSet = Array.isArray(saved.wrongSet) ? saved.wrongSet : [];
+        state.streak = Number(saved.streak) || 0;
+      }
+    } catch (e) {}
+
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    let currentList = [...VOCAB];
+    let currentIndex = 0;
+    let answered = false;
+    let fcFlipped = false;
+
+    const unitFilter = document.getElementById("unitFilter");
+    const btnShuffle = document.getElementById("btnShuffle");
+    const btnReset = document.getElementById("btnReset");
+    const tabQuiz = document.getElementById("tabQuiz");
+    const tabFlash = document.getElementById("tabFlash");
+    const quizSection = document.getElementById("quizSection");
+    const flashSection = document.getElementById("flashSection");
+
+    function updateStats() {
+      document.getElementById("statTotal").textContent = VOCAB.length;
+      document.getElementById("statCorrect").textContent = state.correctSet.length;
+      document.getElementById("statWrong").textContent = state.wrongSet.length;
+      document.getElementById("statStreak").textContent = state.streak;
+    }
+
+    function applyFilter(doShuffle = false) {
+      const val = unitFilter.value;
+      if (val === "ALL") {
+        currentList = [...VOCAB];
+      } else if (val === "WRONG") {
+        currentList = VOCAB.filter(item => state.wrongSet.includes(item.en));
+        if (currentList.length === 0) {
+          alert("Bạn chưa có từ nào làm sai! Hệ thống sẽ hiển thị toàn bộ Unit 1–5.");
+          unitFilter.value = "ALL";
+          currentList = [...VOCAB];
+        }
+      } else {
+        currentList = VOCAB.filter(item => item.unit === val);
+      }
+      if (doShuffle) currentList = shuffleArray(currentList);
+      currentIndex = 0;
+      fcFlipped = false;
+      renderQuiz();
+      renderFlashcard();
+    }
+
+    function getChoices(target) {
+      const samePos = VOCAB.filter(v => v.en !== target.en && v.pos === target.pos);
+      const others = VOCAB.filter(v => v.en !== target.en);
+      const pool = samePos.length >= 3 ? samePos : others;
+      const distractors = shuffleArray(pool).slice(0, 3);
+      return shuffleArray([target, ...distractors]);
+    }
+
+    function renderQuiz() {
+      const item = currentList[currentIndex];
+      if (!item) return;
+
+      answered = false;
+      document.getElementById("qUnitTag").textContent = item.unit;
+      document.getElementById("qCounter").textContent = `Câu ${currentIndex + 1} / ${currentList.length}`;
+      document.getElementById("qMeaning").textContent = item.vi;
+      document.getElementById("qPos").textContent = `Loại từ: (${item.pos})`;
+
+      const pct = Math.round(((currentIndex + 1) / currentList.length) * 100);
+      document.getElementById("progressBar").style.width = pct + "%";
+
+      document.getElementById("feedbackBox").classList.remove("show");
+      document.getElementById("btnNext").classList.add("hidden");
+
+      const choices = getChoices(item);
+      const optionsBox = document.getElementById("optionsBox");
+      optionsBox.innerHTML = "";
+      const keys = ["A", "B", "C", "D"];
+
+      choices.forEach((choice, idx) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "opt-btn";
+        btn.innerHTML = `<span class="opt-key">${keys[idx]}</span><span>${choice.en}</span>`;
+        btn.onclick = () => handleAnswer(btn, choice, item);
+        optionsBox.appendChild(btn);
+      });
+    }
+
+    function handleAnswer(selectedBtn, choice, target) {
+      if (answered) return;
+      answered = true;
+
+      const allBtns = document.querySelectorAll(".opt-btn");
+      allBtns.forEach(b => {
+        b.disabled = true;
+        const text = b.querySelector("span:last-child").textContent;
+        if (text === target.en) b.classList.add("correct");
+      });
+
+      const isRight = choice.en === target.en;
+      const fbTitle = document.getElementById("fbTitle");
+      const fbDetail = document.getElementById("fbDetail");
+      const fbUkUs = document.getElementById("fbUkUs");
+      const fbExample = document.getElementById("fbExample");
+
+      if (isRight) {
+        state.streak += 1;
+        if (!state.correctSet.includes(target.en)) state.correctSet.push(target.en);
+        state.wrongSet = state.wrongSet.filter(w => w !== target.en);
+        fbTitle.textContent = "Chính xác!";
+        fbTitle.style.color = "#34d399";
+      } else {
+        selectedBtn.classList.add("wrong");
+        state.streak = 0;
+        if (!state.wrongSet.includes(target.en)) state.wrongSet.push(target.en);
+        fbTitle.textContent = `Chưa đúng — Đáp án đúng là: ${target.en}`;
+        fbTitle.style.color = "#f87171";
+      }
+
+      fbDetail.textContent = `${target.en} (${target.pos}): ${target.vi}`;
+      fbUkUs.textContent = target.ukus ? `Biến thể Anh–Anh / Anh–Mỹ: ${target.ukus}` : "";
+      fbExample.textContent = `Ví dụ: "${target.ex}"`;
+
+      document.getElementById("feedbackBox").classList.add("show");
+      document.getElementById("btnNext").classList.remove("hidden");
+
+      saveState();
+      updateStats();
+    }
+
+    document.getElementById("btnNext").onclick = () => {
+      currentIndex = (currentIndex + 1) % currentList.length;
+      renderQuiz();
+    };
+
+    function renderFlashcard() {
+      const item = currentList[currentIndex];
+      if (!item) return;
+
+      document.getElementById("fcUnitTag").textContent = item.unit;
+      document.getElementById("fcCounter").textContent = `Thẻ ${currentIndex + 1} / ${currentList.length}`;
+
+      const label = document.getElementById("fcSideLabel");
+      const main = document.getElementById("fcMainText");
+      const sub = document.getElementById("fcSubText");
+
+      if (!fcFlipped) {
+        label.textContent = "NGHĨA TIẾNG VIỆT (Chạm để xem từ tiếng Anh)";
+        main.textContent = item.vi;
+        sub.textContent = `Loại từ: (${item.pos})`;
+      } else {
+        label.textContent = "TỪ TIẾNG ANH (Chạm để lật lại)";
+        main.textContent = item.en;
+        sub.textContent = (item.ukus ? item.ukus + " • " : "") + item.ex;
+      }
+    }
+
+    document.getElementById("flashcardBox").onclick = () => {
+      fcFlipped = !fcFlipped;
+      renderFlashcard();
+    };
+
+    document.getElementById("fcPrev").onclick = () => {
+      currentIndex = (currentIndex - 1 + currentList.length) % currentList.length;
+      fcFlipped = false;
+      renderFlashcard();
+    };
+
+    document.getElementById("fcNext").onclick = () => {
+      currentIndex = (currentIndex + 1) % currentList.length;
+      fcFlipped = false;
+      renderFlashcard();
+    };
+
+    tabQuiz.onclick = () => {
+      tabQuiz.classList.add("active");
+      tabFlash.classList.remove("active");
+      quizSection.classList.remove("hidden");
+      flashSection.classList.add("hidden");
+    };
+
+    tabFlash.onclick = () => {
+      tabFlash.classList.add("active");
+      tabQuiz.classList.remove("active");
+      flashSection.classList.remove("hidden");
+      quizSection.classList.add("hidden");
+      renderFlashcard();
+    };
+
+    unitFilter.onchange = () => applyFilter(false);
+    btnShuffle.onclick = () => applyFilter(true);
+
+    btnReset.onclick = () => {
+      if (confirm("Đặt lại toàn bộ điểm số và danh sách từ đã thuộc?")) {
+        state = { correctSet: [], wrongSet: [], streak: 0 };
+        saveState();
+        updateStats();
+        applyFilter(true);
+      }
+    };
+
+    updateStats();
+    applyFilter(true);
+  </script>
+</body>
+</html>
